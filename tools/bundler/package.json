@@ -14,8 +14,8 @@
     "postinstall": "npm run build",
     "prepublishOnly": "npm run build",
     "eslint": "eslint -c .eslintrc.js src/",
-    "compile": "rm -rf ./output && tsc --project ./tsconfig.json --noEmit",
-    "build": "rm -rf ./output && tsc --project ./tsconfig.json",
+    "compile": "if exist output rd /s /q output && tsc --project ./tsconfig.json --noEmit",
+    "build": "if exist output rd /s /q output && tsc --project ./tsconfig.json",
     "test": "vitest --run",
     "run": "DEBUG='Bundler*' node ./output/bootstrap.js",
     "dev": "DEBUG='Bundler*' ts-node --project ./tsconfig.json src/bootstrap.ts"
